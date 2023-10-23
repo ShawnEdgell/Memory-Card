@@ -32,32 +32,29 @@
   let moves = 0;
   let maxMoves = getMaxMovesByDifficulty(difficulty); // Initialize maxMoves
 
-  // Define your functions here
   function generatePokemons(
-    data: PokemonType[],
-    count: number,
-    clickedPokemons: string[]
-  ): PokemonType[] {
-    const unclickedPokemons = data.filter(
-      (pokemon) => !clickedPokemons.includes(pokemon.name)
-    );
+  data: PokemonType[],
+  count: number,
+  clickedPokemons: string[]
+): PokemonType[] {
+  const unclickedPokemons = data.filter(
+    (pokemon) => !clickedPokemons.includes(pokemon.name)
+  );
 
-    const shuffledData = [...unclickedPokemons].sort(
-      () => Math.random() - 0.5
-    );
+  const shuffledData = [...unclickedPokemons].sort(
+    () => Math.random() - 0.5
+  );
 
-    const selectedPokemon =
-      unclickedPokemons.length > 0
-        ? [shuffledData.pop()!]
-        : [];
+  const selectedPokemon =
+    unclickedPokemons.length > 0
+      ? [shuffledData.pop()!]
+      : [];
 
-    const additionalPokemons = shuffledData.slice(
-      0,
-      Math.max(count - 1, 0)
-    );
+  const additionalPokemons = shuffledData.slice(0, Math.max(count - 1, 0));
 
-    return [...selectedPokemon, ...additionalPokemons];
-  }
+  return [...selectedPokemon, ...additionalPokemons];
+}
+
 
   function getMaxMovesByDifficulty(difficulty: Difficulty): number {
     switch (difficulty) {

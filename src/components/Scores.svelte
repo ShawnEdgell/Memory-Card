@@ -13,14 +13,14 @@
   
   <style>
     /* Styles for the Scores component */
-    
+
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Press+Start+2P&family=Shrikhand&display=swap');
 
     .scores {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 20px;
+      text-align: right;
+      position: fixed;
+      right: 20px;
+      line-height: 5px;
     }
   
     .score {
