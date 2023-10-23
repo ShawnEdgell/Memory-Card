@@ -1,8 +1,7 @@
 /* global.css */
 body {
-    background-image: url('../public/background.jpeg');
+    background-image: url('../public/background.png');
     background-size: cover;
     background-position: center;
-    height: 100vh;
-    /* Other background properties and styles */
+    height: 100vh; 
   }

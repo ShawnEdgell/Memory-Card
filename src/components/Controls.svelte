@@ -18,7 +18,7 @@
   .controls {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
 
   .select {
