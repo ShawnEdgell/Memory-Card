@@ -8,7 +8,7 @@
   import easyPokemonData from './data/pokemon-name-easy.json';
   import mediumPokemonData from './data/pokemon-name-medium.json';
   import hardPokemonData from './data/pokemon-name-hard.json';
-
+  import InfoModal from './components/InfoModal.svelte'; // Import the InfoModal component
 
   type PokemonType = {
     id: number; // Add an 'id' property
@@ -167,6 +167,9 @@
       <Card {pokemon} on:click={() => handleCardClick(pokemon.id)} />
     {/each}
   </div>
+  
+  <InfoModal />
+
 </main>
 
 <style>

@@ -19,10 +19,10 @@
         align-items: center;
         gap: 20px;
         margin-bottom: 20px;
-        font-family: 'Your Desired Font', sans-serif; /* Specify your desired font */
     }
 
     .score {
         font-weight: bold;
+        font-family: sans-serif;
     }
 </style>
