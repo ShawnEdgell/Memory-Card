@@ -23,7 +23,7 @@
       }
     }}
   >
-    <img src="./public/info.svg" alt="Info Icon" style="width: 32px; height: 32px;" />
+    <img src="/public/info.svg" alt="Info Icon" style="width: 32px; height: 32px;" />
   </div>
   
   {#if isOpen}
@@ -47,7 +47,7 @@
       position: fixed;
       left: 10px;
     }
-    
+
     .modal {
       position: fixed;
       top: 0;
