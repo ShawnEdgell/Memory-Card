@@ -19,23 +19,49 @@
     let clickedPokemons: string[] = [];
     let currentScore = 0;
     let bestScore = 0;
+    let moves = 0;
 
     function generatePokemons(data: any[], count: number) {
         const shuffledData = [...data].sort(() => Math.random() - 0.5);
         return shuffledData.slice(0, count);
     }
 
-    const handleCardClick = (pokemonName: string): void => {
-        if (clickedPokemons.includes(pokemonName)) {
-            bestScore = Math.max(bestScore, currentScore);
-            currentScore = 0;
-            clickedPokemons = [];
-        } else {
-            clickedPokemons.push(pokemonName);
-            currentScore += 1;
+    function getMaxMovesByDifficulty(difficulty: Difficulty): number {
+        switch (difficulty) {
+            case "easy":
+                return 5;
+            case "medium":
+                return 7;
+            case "hard":
+                return 10;
+            default:
+                return 0;
         }
-        pokemons = generatePokemons(getPokemonDataByDifficulty(difficulty), DIFFICULTIES[difficulty]);
-    };
+    }
+
+    const handleCardClick = (pokemonName: string): void => {
+    if (clickedPokemons.includes(pokemonName)) {
+        bestScore = Math.max(bestScore, currentScore);
+        currentScore = 0;
+        clickedPokemons = [];
+        moves = 0; // Reset moves when losing
+        alert("You lost. Try again!");
+    } else {
+        clickedPokemons.push(pokemonName);
+        currentScore += 1;
+        moves += 1;
+
+        // Check for win condition
+        if (currentScore === getMaxMovesByDifficulty(difficulty)) {
+            setTimeout(() => {
+                alert("Congratulations! You won!");
+                resetGame();
+                moves = 0; // Reset moves when winning
+            }, 0);
+        }
+    }
+    pokemons = generatePokemons(getPokemonDataByDifficulty(difficulty), DIFFICULTIES[difficulty]);
+};
 
     function handleChange(e: Event) {
         const target = e.target as HTMLSelectElement;
@@ -63,6 +89,14 @@
         pokemons = generatePokemons(getPokemonDataByDifficulty(difficulty), DIFFICULTIES[difficulty]);
         clickedPokemons = [];
         currentScore = 0;
+        moves = 0; // Reset moves when changing difficulty
+    };
+
+    const resetGame = () => {
+        bestScore = Math.max(bestScore, currentScore);
+        currentScore = 0;
+        clickedPokemons = [];
+        pokemons = generatePokemons(getPokemonDataByDifficulty(difficulty), DIFFICULTIES[difficulty]);
     };
 
     onMount(() => {
@@ -82,6 +116,7 @@
     <div class="scores">
         <p>Current Score: {currentScore}</p>
         <p>Best Score: {bestScore}</p>
+        <p>Move: {moves} / {getMaxMovesByDifficulty(difficulty)}</p>
     </div>
 
     <div class="cards">
@@ -103,6 +138,7 @@
     }
     .scores {
         display: flex;
+        align-items: center;
         gap: 20px;
         margin-bottom: 20px;
     }
