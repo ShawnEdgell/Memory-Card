@@ -33,28 +33,35 @@
   let maxMoves = getMaxMovesByDifficulty(difficulty); // Initialize maxMoves
 
   function generatePokemons(
-  data: PokemonType[],
-  count: number,
-  clickedPokemons: string[]
-): PokemonType[] {
-  const unclickedPokemons = data.filter(
-    (pokemon) => !clickedPokemons.includes(pokemon.name)
-  );
+    data: PokemonType[],
+    count: number,
+    clickedPokemons: string[]
+  ): PokemonType[] {
+    const unclickedPokemons = data.filter((pokemon) => {
+      const pokemonName = pokemon.name;
+      return !clickedPokemons.includes(pokemonName);
+    });
 
-  const shuffledData = [...unclickedPokemons].sort(
-    () => Math.random() - 0.5
-  );
+    // Calculate the number of unclicked Pokémon needed
+    const unclickedNeeded = count - unclickedPokemons.length;
 
-  const selectedPokemon =
-    unclickedPokemons.length > 0
-      ? [shuffledData.pop()!]
-      : [];
+    // Add unclicked Pokémon randomly to the array
+    const shuffledData = [...unclickedPokemons].sort(
+      () => Math.random() - 0.5
+    );
 
-  const additionalPokemons = shuffledData.slice(0, Math.max(count - 1, 0));
+    for (let i = 0; i < unclickedNeeded; i++) {
+      shuffledData.push(unclickedPokemons.pop()!);
+    }
 
-  return [...selectedPokemon, ...additionalPokemons];
-}
+    // Shuffle the entire array randomly
+    const shuffledAndClickedData: PokemonType[] = [
+      ...shuffledData,
+      ...clickedPokemons.map((name) => ({ id: -1, name })), // Convert clicked names to PokemonType
+    ].sort(() => Math.random() - 0.5);
 
+    return shuffledAndClickedData;
+  }
 
   function getMaxMovesByDifficulty(difficulty: Difficulty): number {
     switch (difficulty) {

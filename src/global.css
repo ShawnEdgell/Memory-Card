@@ -1,7 +1,17 @@
 /* global.css */
+ body {
+
+}
+
 body {
     background-image: url('../public/background.png');
     background-size: cover;
     background-position: center;
     height: 100vh; 
+    margin: 0;
+    padding: 0;
   }
+
+.cards {
+    max-width: 900px;
+}
