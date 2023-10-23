@@ -40,27 +40,28 @@
     }
 
     const handleCardClick = (pokemonName: string): void => {
-    if (clickedPokemons.includes(pokemonName)) {
-        bestScore = Math.max(bestScore, currentScore);
-        currentScore = 0;
-        clickedPokemons = [];
-        moves = 0; // Reset moves when losing
-        alert("You lost. Try again!");
-    } else {
-        clickedPokemons.push(pokemonName);
-        currentScore += 1;
-        moves += 1;
+  if (clickedPokemons.includes(pokemonName)) {
+    bestScore = Math.max(bestScore, currentScore);
+    currentScore = 0;
+    clickedPokemons = [];
+    moves = 0; // Reset moves when losing
+    alert("You lost. Try again!");
+  } else {
+    clickedPokemons.push(pokemonName);
+    currentScore += 1;
+    moves += 1;
 
-        // Check for win condition
-        if (currentScore === getMaxMovesByDifficulty(difficulty)) {
-            setTimeout(() => {
-                alert("Congratulations! You won!");
-                resetGame();
-                moves = 0; // Reset moves when winning
-            }, 0);
-        }
+    // Check for win condition
+    if (currentScore === getMaxMovesByDifficulty(difficulty)) {
+      setTimeout(() => {
+        alert("Congratulations! You won!");
+        resetGame();
+      }, 0);
     }
+
+    // Reshuffle all three cards
     pokemons = generatePokemons(getPokemonDataByDifficulty(difficulty), DIFFICULTIES[difficulty]);
+  }
 };
 
     function handleChange(e: Event) {
@@ -96,6 +97,7 @@
         bestScore = Math.max(bestScore, currentScore);
         currentScore = 0;
         clickedPokemons = [];
+        moves = 0; // Reset moves to 0
         pokemons = generatePokemons(getPokemonDataByDifficulty(difficulty), DIFFICULTIES[difficulty]);
     };
 
