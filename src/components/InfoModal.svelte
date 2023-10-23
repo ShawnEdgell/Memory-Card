@@ -23,7 +23,10 @@
       }
     }}
   >
-    <img src="/public/info.svg" alt="Info Icon" style="width: 32px; height: 32px;" />
+    <!-- Update the src attribute to import the image -->
+<img src={import.meta.env.BASE_URL + 'info.svg'} alt="Info Icon" />
+
+
   </div>
   
   {#if isOpen}
@@ -85,5 +88,10 @@
     .modal button:hover {
       background-color: #005599;
     }
+
+    img {
+        width: 32px;
+    }
+    
   </style>
   
