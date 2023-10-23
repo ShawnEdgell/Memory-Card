@@ -13,18 +13,18 @@
   </script>
   
   <div
-  class="info-button"
-  role="button"
-  tabindex="0"
-  on:click={openModal}
-  on:keydown={(event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      openModal();
-    }
-  }}
->
-  Info
-</div>
+    class="info-icon"
+    role="button"
+    tabindex="0"
+    on:click={openModal}
+    on:keydown={(event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        openModal();
+      }
+    }}
+  >
+    <img src="./public/info.svg" alt="Info Icon" style="width: 32px; height: 32px;" />
+  </div>
   
   {#if isOpen}
     <div class="modal">
@@ -39,7 +39,7 @@
   
   <style>
     /* Styles for the InfoModal component go here */
-    .info-button {
+    .info-icon {
       cursor: pointer;
       color: #0077cc;
       font-family: sans-serif;
@@ -47,7 +47,7 @@
       position: fixed;
       left: 10px;
     }
-  
+    
     .modal {
       position: fixed;
       top: 0;
