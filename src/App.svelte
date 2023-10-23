@@ -26,7 +26,7 @@
 
   let difficulty: Difficulty = "easy"; // default
   let pokemons: PokemonType[] = generatePokemons(easyPokemonData, DIFFICULTIES[difficulty], []);
-
+  let gamesWon = 0; // Initialize the games won count
   let clickedPokemons: string[] = [];
   let currentScore = 0;
   let bestScore = 0;
@@ -195,4 +195,5 @@
     flex-wrap: wrap;
     gap: 20px;
   }
+
 </style>

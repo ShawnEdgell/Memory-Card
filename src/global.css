@@ -1,0 +1,8 @@
+/* global.css */
+body {
+    background-image: url('../public/background.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    /* Other background properties and styles */
+  }
