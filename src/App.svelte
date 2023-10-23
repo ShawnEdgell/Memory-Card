@@ -155,12 +155,11 @@
 
   <div class="scores">
     <Scores
-  currentScore={currentScore}
-  bestScore={bestScore}
-  moves={moves}
-  maxMoves={getMaxMovesByDifficulty(difficulty)}
-/>
-
+      currentScore={currentScore}
+      bestScore={bestScore}
+      moves={moves}
+      maxMoves={getMaxMovesByDifficulty(difficulty)}
+    />
   </div>
 
   <div class="cards">
@@ -179,13 +178,6 @@
   }
 
   .controls-container {
-    margin-bottom: 20px;
-  }
-
-  .scores {
-    display: flex;
-    align-items: center;
-    gap: 20px;
     margin-bottom: 20px;
   }
 
