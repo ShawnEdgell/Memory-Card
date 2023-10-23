@@ -6,9 +6,9 @@
     type Difficulty = "easy" | "medium" | "hard";
 
     const DIFFICULTIES: Record<Difficulty, number> = {
-        easy: 5,
-        medium: 10,
-        hard: 15
+        easy: 3,
+        medium: 5,
+        hard: 7
     };
 
     let difficulty: Difficulty = "easy"; // default
