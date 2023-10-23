@@ -1,31 +1,32 @@
 <script lang="ts">
     import Card from './components/Card.svelte';
     import { onMount } from 'svelte';
-    import pokemonData from './data/pokemon-names.json'; // Import the JSON data
+    import easyPokemonData from './data/pokemon-name-easy.json';
+    import mediumPokemonData from './data/pokemon-name-medium.json';
+    import hardPokemonData from './data/pokemon-name-hard.json';
 
     type Difficulty = "easy" | "medium" | "hard";
 
     const DIFFICULTIES: Record<Difficulty, number> = {
         easy: 3,
-        medium: 5,
-        hard: 7
+        medium: 4,
+        hard: 5
     };
 
     let difficulty: Difficulty = "easy"; // default
-    let pokemons = generatePokemons(DIFFICULTIES[difficulty]);
+    let pokemons = generatePokemons(easyPokemonData, DIFFICULTIES[difficulty]);
 
     let clickedPokemons: string[] = [];
     let currentScore = 0;
     let bestScore = 0;
 
-    function generatePokemons(count: number) {
-        const shuffledData = [...pokemonData].sort(() => Math.random() - 0.5);
+    function generatePokemons(data: any[], count: number) {
+        const shuffledData = [...data].sort(() => Math.random() - 0.5);
         return shuffledData.slice(0, count);
     }
 
     const handleCardClick = (pokemonName: string): void => {
         if (clickedPokemons.includes(pokemonName)) {
-            // If Pokemon was clicked before
             bestScore = Math.max(bestScore, currentScore);
             currentScore = 0;
             clickedPokemons = [];
@@ -33,8 +34,7 @@
             clickedPokemons.push(pokemonName);
             currentScore += 1;
         }
-        // Shuffle the pokemons to change their order
-        pokemons = generatePokemons(DIFFICULTIES[difficulty]);
+        pokemons = generatePokemons(getPokemonDataByDifficulty(difficulty), DIFFICULTIES[difficulty]);
     };
 
     function handleChange(e: Event) {
@@ -45,16 +45,28 @@
         handleDifficultyChange(newDifficulty);
     }
 
+    function getPokemonDataByDifficulty(difficulty: Difficulty): any[] {
+        switch (difficulty) {
+            case "easy":
+                return easyPokemonData;
+            case "medium":
+                return mediumPokemonData;
+            case "hard":
+                return hardPokemonData;
+            default:
+                return [];
+        }
+    }
+
     const handleDifficultyChange = (newDifficulty: Difficulty) => {
         difficulty = newDifficulty;
-        pokemons = generatePokemons(DIFFICULTIES[difficulty]);
+        pokemons = generatePokemons(getPokemonDataByDifficulty(difficulty), DIFFICULTIES[difficulty]);
         clickedPokemons = [];
         currentScore = 0;
     };
 
     onMount(() => {
-        // Initialize the game when the component mounts
-        pokemons = generatePokemons(DIFFICULTIES[difficulty]);
+        pokemons = generatePokemons(getPokemonDataByDifficulty(difficulty), DIFFICULTIES[difficulty]);
     });
 </script>
 
