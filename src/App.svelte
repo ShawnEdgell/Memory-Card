@@ -171,7 +171,7 @@
     </div>
   </div>
   
-  <img id="pokemon-logo" src="./public/header.png" alt="pokemon logo" />
+  <img id="pokemon-logo" src="/public/header.png" alt="pokemon logo" />
 
   <!-- Render the Rounds component -->
   <Rounds {moves} {maxMoves} />
