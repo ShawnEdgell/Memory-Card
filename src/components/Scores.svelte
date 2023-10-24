@@ -18,8 +18,6 @@
 
     .scores {
       text-align: right;
-      position: fixed;
-      right: 20px;
       line-height: 5px;
     }
   

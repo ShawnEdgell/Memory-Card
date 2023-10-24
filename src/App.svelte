@@ -162,23 +162,25 @@
 
 <main>
 
-  <div class="controls-container">
-    <Controls {difficulty} {handleChange} />
+  <div class="nav">
+    <InfoModal />
+    
+    <div class="controls-container">
+      <Scores {currentScore} {bestScore} />
+      <Controls {difficulty} {handleChange} />
+    </div>
   </div>
+  
+  <img id="pokemon-logo" src="./public/header.png" alt="pokemon logo" />
 
-  <!-- Render the Scores component -->
-  <Scores {currentScore} {bestScore} />
+  <!-- Render the Rounds component -->
+  <Rounds {moves} {maxMoves} />
 
   <div class="cards">
     {#each pokemons as pokemon (pokemon.id)}
       <Card {pokemon} on:click={() => handleCardClick(pokemon.id)} />
     {/each}
   </div>
-
-  <!-- Render the Rounds component -->
-  <Rounds {moves} {maxMoves} />
-
-  <InfoModal />
 
 </main>
 
@@ -188,10 +190,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
   }
 
-  .controls-container {
-    margin-bottom: 20px;
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    width: 97%;
   }
 
   .cards {
@@ -200,5 +206,13 @@
     flex-wrap: wrap;
     gap: 20px;
   }
+
+  #pokemon-logo {
+    width: 200px;
+  }
   
+  .controls-container {
+    display: flex;
+    flex-direction: column;
+  }
 </style>

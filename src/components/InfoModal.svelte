@@ -47,8 +47,6 @@
       color: #0077cc;
       font-family: sans-serif;
       font-size: 20px;
-      position: fixed;
-      left: 10px;
       margin-top: 8px;
     }
 

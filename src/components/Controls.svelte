@@ -17,8 +17,8 @@
   /* Styles for the Controls component go here */
   .controls {
     display: flex;
-    justify-content: center;
-    margin: 20px 0;
+    justify-content: right;
+    margin-top: 10px;
   }
 
   .select {
