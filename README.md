@@ -4,4 +4,7 @@ Pokémon Memory Card Game
 
 - Test your memory and strategy skills while enjoying the world of Pokémon
 
-![image](https://github.com/ShawnEdgell/Memory-Card/assets/145321915/f36033d5-435e-4b00-95b0-a1ae810c92ad)
+https://shawnedgell.github.io/Memory-Card/
+
+![image](https://github.com/ShawnEdgell/Memory-Card/assets/145321915/9c267df1-ce80-4fa6-99e7-42e39034236c)
+
