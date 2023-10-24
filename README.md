@@ -6,5 +6,6 @@ Pokémon Memory Card Game
 
 https://shawnedgell.github.io/Memory-Card/
 
-![image](https://github.com/ShawnEdgell/Memory-Card/assets/145321915/9c267df1-ce80-4fa6-99e7-42e39034236c)
+![image](https://github.com/ShawnEdgell/Memory-Card/assets/145321915/7fa4dd1c-422f-4a51-9f7e-9643cb21047c)
+
 
